@@ -1,8 +1,16 @@
-import { Box, Button, TextField } from "@mui/material";
-import { Formik } from "formik";
+import React from "react";
+import {
+  Box,
+  Button,
+  TextField,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
+import { Formik, useFormik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const Form = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
@@ -11,9 +19,15 @@ const Form = () => {
     console.log(values);
   };
 
+  const formik = useFormik({
+    initialValues,
+    validationSchema: checkoutSchema,
+    onSubmit: handleFormSubmit,
+  });
+
   return (
     <Box m="20px">
-      <Header title="CREATE USER" subtitle="Create a New User Profile" />
+      <Header title="CREATE ADMIN" subtitle="Create a New Admin Profile" />
 
       <Formik
         onSubmit={handleFormSubmit}
@@ -27,6 +41,7 @@ const Form = () => {
           handleBlur,
           handleChange,
           handleSubmit,
+          setFieldValue,
         }) => (
           <form onSubmit={handleSubmit}>
             <Box
@@ -89,36 +104,59 @@ const Form = () => {
                 helperText={touched.contact && errors.contact}
                 sx={{ gridColumn: "span 4" }}
               />
-              <TextField
+              {/* <TextField
                 fullWidth
                 variant="filled"
                 type="text"
                 label="Address 1"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.address1}
-                name="address1"
-                error={!!touched.address1 && !!errors.address1}
-                helperText={touched.address1 && errors.address1}
+                value={values.password}
+                name="password"
+                error={!!touched.password && !!errors.password}
+                helperText={touched.password && errors.password}
                 sx={{ gridColumn: "span 4" }}
-              />
+              /> */}
               <TextField
                 fullWidth
                 variant="filled"
-                type="text"
-                label="Address 2"
-                onBlur={handleBlur}
+                id="password"
+                name="password"
+                label="Password"
+                type={values.showPassword ? "text" : "password"}
+                value={values.password}
                 onChange={handleChange}
-                value={values.address2}
-                name="address2"
-                error={!!touched.address2 && !!errors.address2}
-                helperText={touched.address2 && errors.address2}
+                onBlur={handleBlur}
+                error={touched.password && !!errors.password}
+                helperText={touched.password && errors.password}
                 sx={{ gridColumn: "span 4" }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={() =>
+                          setFieldValue(
+                            "showPassword",
+                            !values.showPassword
+                          )
+                        }
+                        edge="end"
+                      >
+                        {values.showPassword ? (
+                          <VisibilityOff />
+                        ) : (
+                          <Visibility />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
               />
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
               <Button type="submit" color="secondary" variant="contained">
-                Create New User
+                Create New Admin
               </Button>
             </Box>
           </form>
@@ -139,7 +177,10 @@ const checkoutSchema = yup.object().shape({
     .string()
     .matches(phoneRegExp, "Phone number is not valid")
     .required("required"),
-  address1: yup.string().required("required"),
+  password: yup
+    .string("Enter your password")
+    .min(8, "Password should be of minimum 8 characters length")
+    .required("Password is required"),
   address2: yup.string().required("required"),
 });
 const initialValues = {
@@ -147,7 +188,7 @@ const initialValues = {
   lastName: "",
   email: "",
   contact: "",
-  address1: "",
+  password: "",
   address2: "",
 };
 

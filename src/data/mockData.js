@@ -1,87 +1,112 @@
 import { tokens } from "../theme";
 
-export const mockDataTeam = [
+
+export const mockDataCategory = [
   {
     id: 1,
-    name: "Jon Snow",
-    email: "jonsnow@gmail.com",
-    age: 35,
-    phone: "(665)121-5454",
-    access: "admin",
+    categoryname: "Electronic & Gadgets",
+    description: "Explore the latest in cutting-edge technology",
   },
   {
     id: 2,
-    name: "Cersei Lannister",
-    email: "cerseilannister@gmail.com",
-    age: 42,
-    phone: "(421)314-2288",
-    access: "manager",
+    categoryname: "Fashion & Appareal",
+    description: "Discover trendy and timeless fashion pieces.",
   },
   {
     id: 3,
-    name: "Jaime Lannister",
-    email: "jaimelannister@gmail.com",
-    age: 45,
-    phone: "(422)982-6739",
-    access: "user",
+    categoryname: "Toys",
+    description: "Foster creativity and fun for all ages with an extensive collection of toys, games, and educational activities that entertain and inspire."
   },
   {
     id: 4,
-    name: "Anya Stark",
-    email: "anyastark@gmail.com",
-    age: 16,
-    phone: "(921)425-6742",
-    access: "admin",
+    categoryname: "Sport & Outdoors",
+    description: "Elevate your active lifestyle with high-quality sports gear, fitness equipment, and outdoor essentials for enthusiasts and adventurers alike."
   },
   {
     id: 5,
-    name: "Daenerys Targaryen",
-    email: "daenerystargaryen@gmail.com",
-    age: 31,
-    phone: "(421)445-1189",
-    access: "user",
-  },
-  {
-    id: 6,
-    name: "Ever Melisandre",
-    email: "evermelisandre@gmail.com",
-    age: 150,
-    phone: "(232)545-6483",
-    access: "manager",
-  },
-  {
-    id: 7,
-    name: "Ferrara Clifford",
-    email: "ferraraclifford@gmail.com",
-    age: 44,
-    phone: "(543)124-0123",
-    access: "user",
-  },
-  {
-    id: 8,
-    name: "Rossini Frances",
-    email: "rossinifrances@gmail.com",
-    age: 36,
-    phone: "(222)444-5555",
-    access: "user",
-  },
-  {
-    id: 9,
-    name: "Harvey Roxie",
-    email: "harveyroxie@gmail.com",
-    age: 65,
-    phone: "(444)555-6239",
-    access: "admin",
-  },
-  {
-    id: 10,
-    name: "Alif Danish",
-    email: "alifdanish@gmail.com",
-    age: 65,
-    phone: "(444)555-6239",
-    access: "admin",
+    categoryname: "Beauty & Personal Care",
+    description: "Unleash your beauty potential with a range of skincare, cosmetics, and grooming products that enhance your natural radiance."
   },
 ];
+
+export const mockDataSeller = [
+  {
+    id: 1,
+    firstname: "Switch",
+    lastname: "Official Store",
+    email: "jonsnow@gmail.com",
+    phone: "(665)121-5454",
+    status: "Active",
+  },
+  {
+    id: 2,
+    firstname: "Nike",
+    lastname: "Official Store",
+    email: "jonsnow@gmail.com",
+    phone: "(665)121-5454",
+    status: "Active",
+  },
+  {
+    id: 3,
+    firstname: "Sony",
+    lastname: "Official Store",
+    email: "jonsnow@gmail.com",
+    phone: "(665)121-5454",
+    status: "Banned",
+  },
+];
+
+export const mockDataAllProducts = [
+  {
+    id: 1,
+    productimage: "iphone.jpeg",
+    productname: "Iphone 15 Pro",
+    description: "This is Iphone 15 Pro",
+    category: "Electronic & Gadgets",
+    quantity: 1,
+    price: "RM" + 4900.00,
+    seller: "Apple",
+  }
+]
+
+export const mockDataAllOrders = [
+  {
+    id: 1,
+    orderId: "ABCDEF",
+    productname: "Iphone 15 Pro",
+    productimage: "iphone.jpeg",
+    category: "Electronic & Gadgets",
+    seller: "Apple",
+    price: "RM" + 4900.00,
+    quantity: 1,
+    ordertime: "11/10/2023:10:30am",
+    status: "Pending"
+  },
+  {
+    id: 2,
+    orderId: "FSDFGSGR",
+    productname: "Iphone 15 Pro",
+    productimage: "iphone.jpeg",
+    category: "Electronic & Gadgets",
+    seller: "Apple",
+    price: "RM" + 4900.00,
+    quantity: 1,
+    ordertime: "11/11/2023:10:30am",
+    status: "Completed"
+  },
+  {
+    id: 3,
+    orderId: "QWERTY",
+    productname: "Iphone 15 Pro",
+    productimage: "iphone.jpeg",
+    category: "Electronic & Gadgets",
+    seller: "Apple",
+    price: "RM" + 4900.00,
+    quantity: 1,
+    ordertime: "11/09/2023:10:30am",
+    status: "Cancelled"
+  }
+]
 
 export const mockDataContacts = [
   {

@@ -1,62 +1,78 @@
 import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataContacts } from "../../data/mockData";
+import { mockDataAllProducts } from "../../data/mockData";
 import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
 
-const Contacts = () => {
+const Allproduct = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   const columns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
-    { field: "registrarId", headerName: "Registrar ID" },
+    { field: "id", headerName: "ID", flex: 0.2 },
     {
-      field: "name",
-      headerName: "Name",
-      flex: 1,
+      field: "productimage",
+      headerName: "Product",
+      type: "text",
+      headerAlign: "center",
+      flex: 0.7,
+      align: "center",
+    },
+    {
+      field: "productname",
+      headerName: "Product Name",
+      flex: 0.7,
+      headerAlign: "center",
+      align: "center",
       cellClassName: "name-column--cell",
     },
     {
-      field: "age",
-      headerName: "Age",
+        field: "description",
+        headerName: "Description",
+        flex: 1,
+        headerAlign: "center",
+        align: "center",
+        cellClassName: "name-column--cell",
+      },
+    
+    {
+      field: "category",
+      headerName: "Category",
+      headerAlign: "center",
+      align: "center",
+      flex: 0.6,
+    },
+    
+    {
+      field: "price",
+      headerName: "Price",
       type: "number",
-      headerAlign: "left",
-      align: "left",
+      headerAlign: "center",
+      align: "center",
     },
     {
-      field: "phone",
-      headerName: "Phone Number",
-      flex: 1,
+      field: "quantity",
+      headerName: "Qty",
+      type: "number",
+      headerAlign: "center",
+      align: "center",
+      flex: 0.3,
     },
     {
-      field: "email",
-      headerName: "Email",
-      flex: 1,
-    },
-    {
-      field: "address",
-      headerName: "Address",
-      flex: 1,
-    },
-    {
-      field: "city",
-      headerName: "City",
-      flex: 1,
-    },
-    {
-      field: "zipCode",
-      headerName: "Zip Code",
-      flex: 1,
-    },
+        field: "seller",
+        headerName: "Seller",
+        flex: 0.5,
+        headerAlign: "center",
+        align: "center",
+      },
   ];
 
   return (
-    <Box m="20px">
+    <Box m="10px">
       <Header
-        title="CONTACTS"
-        subtitle="List of Contacts for Future Reference"
+        title="ALL PRODUCTS"
+        subtitle="List of All Products for Admin Reference"
       />
       <Box
         m="0px 0 0 0"
@@ -91,15 +107,15 @@ const Contacts = () => {
         }}
       >
         <DataGrid
-          rows={mockDataContacts}
+          rows={mockDataAllProducts}
           columns={columns}
           autoHeight={true}
           autoPageSize={false}
-          slots={{ Toolbar: GridToolbar }}
+          slots={{ toolbar: GridToolbar }}
         />
       </Box>
     </Box>
   );
 };
 
-export default Contacts;
+export default Allproduct;
